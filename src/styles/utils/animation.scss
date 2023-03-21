@@ -1,0 +1,32 @@
+@use "./vars" as v;
+// main logo
+@keyframes spin-logo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+// link button
+@keyframes card-shadow {
+  0% {
+    box-shadow: none;
+  }
+
+  100% {
+    box-shadow: 7px 8px 15px -4px rgba(255, 255, 255, 0.75);
+  }
+}
+
+// modal
+@keyframes into_page {
+  from {
+    top: -100px;
+    opacity: 0;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,11 @@
+@import "./styles/base/base.scss";
+@import "./styles/base/normalize.scss";
+
+//composants
+@import "./styles/components/links.scss";
+
+// pages
+@import "./styles/pages/home.scss";
+
+// themes 
+@import "./styles/themes/themes.scss";

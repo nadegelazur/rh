@@ -1,0 +1,42 @@
+.modal-background{
+    position: absolute;
+    top : 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsla(109, 0%, 67%, 0.8);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-radius: 10px;
+    max-width: 200px;
+    height: 50px;
+    color: white;
+    background-color: cornflowerblue;
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+  .modal-btn{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 15px;
+    height: 15px;
+    fill: #a52a2a;
+  }
+  
+  .modal-btn:hover{
+    cursor: pointer;
+  }
+  

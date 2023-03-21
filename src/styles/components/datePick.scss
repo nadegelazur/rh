@@ -1,0 +1,9 @@
+.datepicker {
+    &__btn-today {
+      right: -67%;
+    }
+  }
+  span.rdrMonthAndYearPickers span.rdrMonthPicker select,
+  span.rdrMonthAndYearPickers span.rdrYearPicker select {
+    min-width: 112px;
+}

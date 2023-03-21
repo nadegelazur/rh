@@ -1,0 +1,23 @@
+.employee_container__table {
+    width: 80%;
+    margin: 0 auto;
+  }
+  // navbar
+  .employee_container__nav {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  // element pair du tableau
+  .even {
+    background: rgba(0, 0, 0, 0.5);
+    & td {
+      color: aliceblue;
+    }
+    &:hover {
+      & td {
+        color: black;
+      }
+    }
+  }
+  
