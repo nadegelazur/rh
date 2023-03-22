@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { onlyTextRegex, addressRegex } from "./regex";
 
-export const validationFormSchema = Yup.object().shape({
+const validationFormSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, "too short !")
     .max(30, "too long !!")
@@ -47,3 +47,4 @@ export const validationFormSchema = Yup.object().shape({
   states: Yup.string().nullable(false).required("this is a required field"),
   department: Yup.string().nullable(false).required("this is a required field"),
 });
+export default validationFormSchema

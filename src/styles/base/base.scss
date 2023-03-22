@@ -50,6 +50,11 @@ select:focus:hover {
   border: 3px solid v.$color !important;
 }
 
+input.is-invalid {
+  border: 1px solid #e40909 !important;
+  display: block;
+}
+
 label {
   color: rgb(32, 53, 30);
   font-weight: 200;

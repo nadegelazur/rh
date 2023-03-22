@@ -5,19 +5,14 @@ import { addStar, fromLowerToUpperCase } from "../utils/function";
 const SelectField = ({
     idName,
     labelName,
- 
     options,
     onChange,
     value,
     toUpperCase,
     isRequired,
     fieldRequired,
-    }) => {
-     
-    
+    }) => { 
     console.log(etats)
-   
-
     return(
         <div className="adresse_bloc-1">
                 <label htmlFor={idName} className="input_container__label">
@@ -27,6 +22,7 @@ const SelectField = ({
                 </label>
                 <select value={value}
                         onChange={onChange}
+                        options={options}
                 >
                 </select>
         </div>

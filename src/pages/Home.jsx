@@ -1,209 +1,251 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { onlyTextRegex, addressRegex } from "../utils/regex";
+// import { validationFormSchema } from '../utils/yupValidation'
 
 import Header from '../components/Header';
-import TextInput from '../components/TextInput';
+import TextField from '../components/TextFieldNew';
 import Dater from '../components/DatePick';
-import SelectField from '../components/SelectField';
+import Button from '../components/Button';
 
-import { etats, departments } from '../utils/SelectDatas'
-
-import { submitForm } from '../features/HomeSlice';
 import {
   selectState,
   selectDepartment,
-  inputFirstName,
-  inputLastName,
-  inputStreet,
-  inputCity,
   inputZipCode,
   inputBirthDate,
   inputStartDate,
 } from '../utils/homeCompoProp';
 
-import { validationFormSchema } from '../utils/utils';
-
-
+import { etats, departments } from '../utils/SelectDatas'
+import { addUser } from '../features/UserSlice';
 
 const Home = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
   const dispatch = useDispatch();
-  const [zipCode, setZipCode] = useState();
+  
+  const navigate = useNavigate();
+  const[values, setValues] = useState({
+    firstName: '',
+    lastName: '',
+    birthDate: '',
+    startDate: '',
+    street: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    department: '',
+  });
+  const handleAddUser = () => {
+    setValues({
+      firstName: '',
+      lastName: '',
+      birthDate: '',
+      startDate: '',
+      street: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      department: '',
+    })
+    // console.log(values)
+    dispatch(addUser({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      birthDate: values.birthDate,
+      startDate: values.startDate,
+      street: values.street,
+      city: values.city,
+      state: values.state,
+      zipCode: values.zipCode,
+      department: values.department,
+    }))
+    navigate('/employee-list')
+    // when buuton submit ouvrir le Modal
+  }
+  const[zipCode, setZipCode] = useState('');
 
+  const validate = Yup.object({
+    firstName: Yup.string()
+      .min(6, 'Must be at least 6 characters')
+      .max(15, 'Must be 15 characters or less')
+      .matches(onlyTextRegex, "Not special characters and not number")
+      .required('Required'),
+    lastName: Yup.string()
+      .min(6, 'Must be at least 6 characters')
+      .max(20, 'Must be 20 characters or less')
+      .matches(onlyTextRegex, "Not special characters and not number")
+      .required('Required'),
+    street: Yup.string()
+      .min(6, 'Must be at least 6 characters')
+      .max(15, 'Must be 15 characters or less')
+      .matches(addressRegex, "No special characters")
+      .required('Required'),
+    city: Yup.string()
+      .min(6, 'Must be at least 6 characters')
+      .max(15, 'Must be 15 characters or less')
+      .matches(onlyTextRegex, "Not special characters and not number")
+      .required('Required'),
+  })
   return (
     <div className="home_container">
-        <div className="home_container__box_header">
-            <Header>HRnet</Header>
-            <div className='link_bloc'>
-              <Link to="employee-list" aria-label="To employee list">
-                View Current Employees
-              </Link>
-            </div>
+      <div className="home_container__box_header">
+        <Header>HRnet</Header>
+        <div className='link_bloc'>
+          <Link to="employee-list" aria-label="To employee list">
+            View Current Employees
+          </Link>
         </div>
-        <div className='home_container__box_form'>
-          <Formik
-            initialValues={{
-              firstName: "",
-              lastName: "",
-              birthDate: "",
-              startDate: "",
-              street: "",
-              city: "",
-              states: "",
-              zipCode: "",
-              department: "",
-            }}
-            validationSchema={validationFormSchema}
-            onSubmit={(value, { resetForm }) => {
-              dispatch(submitForm(value));
+      </div>
 
-              setIsOpen(true);
-              resetForm();
-          }} >
-          {({ errors, touched, isSubmiting }) => (
-            <Form className="home_container__box_form__form">
-              <div className='home_container__box_form__form__container__box_one__input_bloc'>
-                    
-                <div className='home_container__box_form__form__container__box_one__init_bloc'>
-                  <Field as={TextInput}
-                         name={inputFirstName.idName}
-                         {...inputFirstName}
-                  />  
-                    {errors.firstName && touched.firstName}
-                  <div className={errors.firstName ? "error active" : "error"}>
-                    {errors.firstName}
-                  </div> 
+      <div className='home_container__box_form'>
+        <Formik
+          initialValues={{
+            firstName: '',
+            lastName: '',
+            birthDate: '',
+            startDate: '',
+            street: '',
+            city: '',
+            state: '',
+            zipCode: '',
+            department: '',
+          }}
+          validationSchema={validate}
+          onSubmit={values => {
+            console.log(values)
+          }}
+        >
+          {formik => 
+            <div>
+              {/* {console.log(formik.values)} */}
+              <Form className="home_container__box_form__form">
+                <div className='home_container__box_form__form__container__box_one__input_bloc'>
 
-                  <Field as={TextInput}
-                        name={inputLastName.idName}
-                        {...inputLastName}
-                  />
-                    {errors.lastName && touched.lastName}
-                  <div className={errors.lastName ? "error active" : "error"}>
-                    {errors.lastName}
-                  </div>  
-                </div>
-
-                <div className='home_container__box_form__form__container__box_one__data_bloc'>
-                  <Field name="birthDate" as={Dater} {...inputBirthDate} />
-                    {errors.birthDate && touched.birthDate}
-                  <div className={errors.birthDate ? "error active" : "error"}>
-                      {errors.birthDate}
-                  </div>
-                  <Field name="startDate" as={Dater} {...inputStartDate} />
-                    {errors.startDate && touched.startDate}
-                  <div className={errors.startDate ? "error active" : "error"}>
-                    {errors.startDate}
-                  </div>
-                </div> 
-
-                <div className='home_container__box_form__form__container__box_one__adresse_bloc'>
-                  <fieldset>
-                    <legend>Adresse</legend>
-                    <div className='adresse_bloc-1'>
-                      <Field as={TextInput}
-                             name={inputStreet.idName}
-                             {...inputStreet}
+                  <div className='home_container__box_form__form__container__box_one__init_bloc'>
+                    <TextField 
+                      label="First Name"
+                      value={values.firstName}
+                      onChange={(e) => setValues({...values, firstName: e.target.value })}
+                      inputProps={{type: 'text', placeholder: 'Jhon'}} 
+                      name="firstName"
                       />
-                        {errors.street && touched.street}
-                      <div className={errors.street ? "error active" : "error"}>
-                        {errors.street}
+                    <TextField 
+                      label="Last Name" 
+                      value={values.lastName}
+                      onChange={(e) => setValues({...values, lastName: e.target.value })}
+                      inputProps={{type: 'text', placeholder: 'Doe'}}
+                      name="lastName"
+                      />
+                  </div>
+                  <div className='home_container__box_form__form__container__box_one__date_bloc'>
+                    <Field  as={Dater}
+                            value={values.birthDate}
+                            onChange={(e) => setValues({...values, birthDate: e.target.value })}
+                            name="birthDate"
+                    />
+                    <Field  as={Dater}
+                            value={values.startDate} 
+                            onChange={(e) => setValues({...values, startDate: e.target.value })}
+                            name="startDate"
+                    />
+                  </div>
+                  <div className='home_container__box_form__form__container__box_one__adresse_bloc'>
+                    <fieldset>
+                      <legend>Adresse</legend>
+                      <div className='adresse_bloc-1'>
+                        <TextField 
+                          label="Street" 
+                          value={values.street}
+                          onChange={(e) => setValues({...values, street: e.target.value })}
+                          inputProps={{type: 'text', placeholder: '5 Parc Avenue'}} 
+                          name="street"
+                          />
+                        <TextField 
+                          label="City" 
+                          value={values.city}
+                          onChange={(e) => setValues({...values, city: e.target.value })}
+                          inputProps={{type: 'text', placeholder: 'New York'}} 
+                          name="city"
+                          />
                       </div>
-
-                      <Field as={TextInput}
-                             name={inputCity.idName}
-                             {...inputCity}
-                      />
-                        {errors.city && touched.city}
-                      <div className={errors.city ? "error active" : "error"}>
-                        {errors.city}
-                      </div>                    
-                    </div>
-                    <div className='adresse_bloc-1'>
-                      <div className='input_container'>
-                        <label className=''>State</label>
-                        <Field as="select"
-                              name={selectState.idName}
-                              placeholder="Alabama">                              
-                          { etats.map((option, index) => {
-                            return (
-                                <option value={option.name}
-                                        key={index}>
-                                        {option.name}
-                                </option>
-                            )}) 
-                          }
-                        </Field>  
-                          {errors.states && touched.states}
-                        <div className={errors.states ? "error active" : "error"}>
-                          {errors.states}
+                      <div className='adresse_bloc-1'>
+                        <div className='input_container'>
+                          <label htmlFor="state">State</label>
+                          <Field  as="select"
+                                  value={values.state}
+                                  onChange={(e) => setValues({...values, state: e.target.value })}
+                                  name="state"
+                                  placeholder="Alabama"
+                          >                              
+                            { etats.map((option, index) => {
+                              return (
+                                  <option value={option.name}
+                                          key={index}>
+                                          {option.name}
+                                  </option>
+                              )}) 
+                            }
+                          </Field> 
                         </div>
+                        <div className='input_container'>
+                        <TextField 
+                          label="Zip Code" 
+                          value={values.zipCode}
+                          onChange={(e) => setValues({...values, zipCode: e.target.value })}
+                          inputProps={{type: 'number', placeholder: '13000'}} 
+                          name="zipCode"
+                          />
+                        </div>
+        
                       </div>
-                      {/* <Field name={selectState.idName}
-                             as={SelectField}
-                             {...selectState}
-                      />
-                        {errors.states && touched.states}
-                      <div className={errors.states ? "error active" : "error"}>
-                          {errors.states}
-                      </div> */}
-                      
-
-                      {/* <label htmlFor="zip-code">Zip Code</label>
-                      {/* <input  id="zip-code"
-                              type="number"
-                              required="required"
-                              onChange={(e) => setZipCode(e.target.value)}
-                      />   
-                      <Field  type="number"
-                              required="required">
-
-                      </Field>
-                      {errors.zipCode && touched.zipCode}
-                      <div className={errors.zipCode ? "error active" : "error"}>
-                        {errors.zipCode}
-                      </div> */}
-                                              
-                    </div>
-                  </fieldset>
-                </div> 
-                <div className='home_container__box_form__form__container__box_one__departement_bloc'>
-                  <div className='input_container'>
-                    <label className=''>Departement</label>
-                    <Field as="select"
-                            name={selectDepartment.idName}
-                            placeholder="Sales">     
-                      { departments.map((option, index) => {
-                        return (
-                            <option value={option}
-                                    key={index}>
-                                    {option}
-                            </option>
-                        )}) 
-                      } 
-                    </Field>   
-                      {errors.department && touched.department}
-                    <div className={errors.department ? "error active" : "error"}>
-                      {errors.department}
-                    </div>     
+                    </fieldset>
                   </div>
-                  
-                </div>             
-                <div className="home_container__box_form__form__container__input_button">
-                  <button className="" type="submit" role="button">
-                    Save
-                  </button>
-                </div>  
-              </div>
-            </Form>
-          )}  
-          </Formik>
-        </div>
-       
+
+                  <div className='home_container__box_form__form__container__box_one__departement_bloc'>
+                    <div className='input_container'>
+                      <label className=''>Departement</label>
+                      <Field  as="select"
+                              value={values.department}
+                              onChange={(e) => setValues({...values, department: e.target.value })}
+                              name="department"
+                              placeholder="Sales"
+                      >     
+                        { departments.map((option, index) => {
+                          return (
+                              <option value={option}
+                                      key={index}>
+                                      {option}
+                              </option>
+                          )}) 
+                        } 
+                      </Field>     
+                    </div>
+                  </div>                       
+
+
+                  <div className="home_container__box_form__form__container__input_button">
+                    <Button 
+                            type="submit"
+                            role="button"
+                            onClick={handleAddUser}>
+                      Save
+                    </Button>
+                    {/* <button type="submit" role="button">
+                      Save
+                    </button> */}
+                  </div>   
+                </div>
+              </Form>
+            </div>
+          }
+        </Formik>
+      </div>
+     
     </div>
+    
   )
 }
-
 export default Home;
+

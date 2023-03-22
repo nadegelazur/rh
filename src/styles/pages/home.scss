@@ -41,9 +41,9 @@
             justify-content: center;
             border: v.$blackborder;
             padding: 0.5rem;
-            // margin: 0 auto;
-            // width: 70%;
-            width: auto;
+            margin: 0 auto;
+            width: 70%;
+            // width: auto;
             border-radius: 5px;
             background: v.$colorLight;
             // background: rgba(104, 165, 96, 0.26);
@@ -56,7 +56,7 @@
             }
           }
           &__box_one__init_bloc,
-          &__box_one__data_bloc,
+          &__box_one__date_bloc,
           
           &__box_one__departement_bloc {
             display: flex;

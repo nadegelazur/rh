@@ -91,12 +91,13 @@ const createData = (
    const city = _city;
    const zipCode = _zipCode;
    const departement = _departement;
+   const states = _states;
 
-   const states = etats.map((state) => {
-    if (state.name.includes(_states)) {
-      return state.abbreviation;
-    }
-  });
+  //  const states = etats.map((state) => {
+  //   if (state.name.includes(_states)) {
+  //     return state.abbreviation;
+  //   }
+  // });
   
   return {
     firstName,

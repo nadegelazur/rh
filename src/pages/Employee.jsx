@@ -6,10 +6,13 @@ import { useSelector } from "react-redux";
 import Header from "../components/Header";
 import StickyHeadTable from "../components/Table";
 
-import { sendEmployees } from '../features/HomeSlice';
+// import { sendEmployees } from '../features/HomeSlice';
+
 
 const Employee = () => {
-  const stateDatas = useSelector(sendEmployees);
+  const stateDatas = useSelector(store => store.users);
+  // console.log(stateDatas)
+  // const stateDatas = useSelector(sendEmployees);
   const ref = React.useRef();
   const [renderDataTable, setRenderDataTable] = React.useState(
     <StickyHeadTable datas={stateDatas} />

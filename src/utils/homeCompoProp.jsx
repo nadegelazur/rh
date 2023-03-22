@@ -2,7 +2,7 @@ import { etats, departments } from "./SelectDatas";
 
 export const selectState = {
   idName: "states",
-  labelName: "state",
+  labelName: "State",
   toUpperCase: true,
   options: etats,
   group: false,
@@ -11,7 +11,7 @@ export const selectState = {
 };
 export const selectDepartment = {
   idName: "department",
-  labelName: "department",
+  labelName: "Department",
   toUpperCase: true,
   options: departments,
   group: false,
@@ -20,21 +20,21 @@ export const selectDepartment = {
 };
 export const inputFirstName = {
   idName: "firstName",
-  labelName: "first name",
+  labelName: "First name",
   myClass: "input_text",
   toUpperCase: true,
   fieldRequired: true,
 };
 export const inputLastName = {
   idName: "lastName",
-  labelName: "last name",
+  labelName: "Last name",
   myClass: "input_text",
   toUpperCase: true,
   fieldRequired: false,
 }
 export const inputStreet = {
   idName: "street",
-  labelName: "street",
+  labelName: "Street",
   myClass: "input_text",
   toUpperCase: true,
   fieldRequired: false,
@@ -57,7 +57,7 @@ export const inputZipCode = {
 };
 export const inputBirthDate = {
   idName: "birthDate",
-  labelName: "birth date",
+  labelName: "Birth Date",
   toUpperCase: true,
   placeh: "click here",
   lang: "en",
@@ -65,7 +65,7 @@ export const inputBirthDate = {
 };
 export const inputStartDate = {
   idName: "startDate",
-  labelName: "start date",
+  labelName: "Start Date",
   toUpperCase: true,
   placeh: "click here",
   lang: "en",

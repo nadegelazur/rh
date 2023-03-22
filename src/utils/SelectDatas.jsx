@@ -1,9 +1,9 @@
 export const departments = [
-    "sales",
-    "marketing",
-    "engineering",
-    "human ressources",
-    "legal",
+    "Sales",
+    "Marketing",
+    "Engineering",
+    "Human ressources",
+    "Legal",
   ];
   
   export const etats = [
