@@ -4,28 +4,21 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { onlyTextRegex, addressRegex } from "../utils/regex";
-// import { validationFormSchema } from '../utils/yupValidation'
+import { Modal } from 'lanana-modal-component/dist/index'
+import '../styles/components/modal.scss'
 
 import Header from '../components/Header';
 import TextField from '../components/TextFieldNew';
 import Dater from '../components/DatePick';
 import Button from '../components/Button';
 
-import {
-  selectState,
-  selectDepartment,
-  inputZipCode,
-  inputBirthDate,
-  inputStartDate,
-} from '../utils/homeCompoProp';
-
 import { etats, departments } from '../utils/SelectDatas'
 import { addUser } from '../features/UserSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
-  
-  const navigate = useNavigate();
+
+  const [modal, setModal] = useState(false);
   const[values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -37,6 +30,7 @@ const Home = () => {
     zipCode: '',
     department: '',
   });
+
   const handleAddUser = () => {
     setValues({
       firstName: '',
@@ -61,10 +55,9 @@ const Home = () => {
       zipCode: values.zipCode,
       department: values.department,
     }))
-    navigate('/employee-list')
     // when buuton submit ouvrir le Modal
+    setModal(true);
   }
-  const[zipCode, setZipCode] = useState('');
 
   const validate = Yup.object({
     firstName: Yup.string()
@@ -101,25 +94,26 @@ const Home = () => {
 
       <div className='home_container__box_form'>
         <Formik
-          initialValues={{
-            firstName: '',
-            lastName: '',
-            birthDate: '',
-            startDate: '',
-            street: '',
-            city: '',
-            state: '',
-            zipCode: '',
-            department: '',
-          }}
+          // initialValues={
+          //   { 
+          //     firstName: '',
+          //     lastName: '',
+          //     birthDate: '',
+          //     startDate: '',
+          //     street: '',
+          //     city: '',
+          //     state: '',
+          //     zipCode: '',
+          //     department: '',
+          //   }
+          // }
           validationSchema={validate}
-          onSubmit={values => {
+          onSubmit={ values  => {
             console.log(values)
-          }}
-        >
-          {formik => 
+          }} >
+        
+          { formik => 
             <div>
-              {/* {console.log(formik.values)} */}
               <Form className="home_container__box_form__form">
                 <div className='home_container__box_form__form__container__box_one__input_bloc'>
 
@@ -139,18 +133,19 @@ const Home = () => {
                       name="lastName"
                       />
                   </div>
+                  
                   <div className='home_container__box_form__form__container__box_one__date_bloc'>
                     <Field  as={Dater}
                             value={values.birthDate}
                             onChange={(e) => setValues({...values, birthDate: e.target.value })}
-                            name="birthDate"
-                    />
+                            name="birthDate" />
+                    
                     <Field  as={Dater}
                             value={values.startDate} 
                             onChange={(e) => setValues({...values, startDate: e.target.value })}
-                            name="startDate"
-                    />
+                            name="startDate" />  
                   </div>
+
                   <div className='home_container__box_form__form__container__box_one__adresse_bloc'>
                     <fieldset>
                       <legend>Adresse</legend>
@@ -170,6 +165,7 @@ const Home = () => {
                           name="city"
                           />
                       </div>
+
                       <div className='adresse_bloc-1'>
                         <div className='input_container'>
                           <label htmlFor="state">State</label>
@@ -177,16 +173,16 @@ const Home = () => {
                                   value={values.state}
                                   onChange={(e) => setValues({...values, state: e.target.value })}
                                   name="state"
-                                  placeholder="Alabama"
-                          >                              
-                            { etats.map((option, index) => {
-                              return (
-                                  <option value={option.name}
-                                          key={index}>
-                                          {option.name}
-                                  </option>
-                              )}) 
-                            }
+                                  placeholder="Alabama" > 
+                                            
+                                    { etats.map((option, index) => {
+                                      return (
+                                          <option value={option.name}
+                                                  key={index}>
+                                                  {option.name}
+                                          </option>
+                                      )}) 
+                                    }
                           </Field> 
                         </div>
                         <div className='input_container'>
@@ -224,17 +220,13 @@ const Home = () => {
                     </div>
                   </div>                       
 
-
                   <div className="home_container__box_form__form__container__input_button">
                     <Button 
-                            type="submit"
-                            role="button"
-                            onClick={handleAddUser}>
-                      Save
+                      type="submit"
+                      role="button"
+                      onClick={ handleAddUser } >
+                        Save
                     </Button>
-                    {/* <button type="submit" role="button">
-                      Save
-                    </button> */}
                   </div>   
                 </div>
               </Form>
@@ -242,9 +234,12 @@ const Home = () => {
           }
         </Formik>
       </div>
-     
-    </div>
-    
+
+      <Modal  title={ 'Employee was successfully created' }
+              isOpen={modal}
+              isClose={ () => setModal(false) } >
+      </Modal>       
+    </div> 
   )
 }
 export default Home;

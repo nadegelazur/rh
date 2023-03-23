@@ -1,7 +1,9 @@
 @use "../utils/vars.scss" as v;
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
-
+html {
+  overflow-y: hidden;
+}
 #root {
   width: 100%;
 }
