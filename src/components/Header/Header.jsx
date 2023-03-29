@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo_view.webp";
+import logo from "../../assets/logo_view.png";
 
 import "./header.css"
 
