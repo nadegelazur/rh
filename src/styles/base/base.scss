@@ -24,7 +24,6 @@ h1 {
 
 fieldset {
   // width: 250px;
-  border: none !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +42,7 @@ select {
   border: 1px solid #000 !important;
   border-radius: 5px;
   padding: 0.5rem;
-  min-width: 200px;
+  // min-width: 200px;
 }
 
 input:focus,

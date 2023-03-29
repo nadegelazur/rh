@@ -20,7 +20,8 @@ const SelectField = ({
                     ? addStar(fromLowerToUpperCase(labelName), fieldRequired)
                     : addStar(labelName, isRequired)}
                 </label>
-                <select value={value}
+                <select 
+                        value={value}
                         onChange={onChange}
                         options={options}
                 >

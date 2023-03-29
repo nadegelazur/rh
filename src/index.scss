@@ -9,3 +9,18 @@
 
 // themes 
 @import "./styles/themes/themes.scss";
+
+//layout - media screen
+@import "./styles/layout/media.scss";
+
+// @media screen and (max-width: 640px) {
+//     .home_container__box_header {
+         
+//             flex-direction: column;
+          
+//     }
+//     .header_container{
+//         display: flex;
+//         align-items: center;
+//     }
+// }

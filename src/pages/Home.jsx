@@ -173,13 +173,17 @@ const Home = () => {
                                   value={values.state}
                                   onChange={(e) => setValues({...values, state: e.target.value })}
                                   name="state"
-                                  placeholder="Alabama" > 
+                                  placeholder="Alabama"
+                                  className="select_container__select" > 
                                             
                                     { etats.map((option, index) => {
                                       return (
-                                          <option value={option.name}
+                                          <option className='select_container__option'
+                                                  value={option.name}
                                                   key={index}>
                                                   {option.name}
+                                                  
+
                                           </option>
                                       )}) 
                                     }

@@ -1,0 +1,103 @@
+@media screen and (max-width: 980px) {
+    html {
+        overflow-y: scroll;
+    }
+    .home_container {
+        &__box_header {
+            justify-content: space-around;
+        }
+        &__box_form {
+            &__form__container {
+                &__box_one {
+                    &__init_bloc {
+                        flex-direction: column;
+                        margin: 0 auto;
+                    }
+                    &__date_bloc {
+                        flex-direction: column;
+                        margin: 28px auto;
+                    }
+                    &__adresse_bloc {
+                        .adresse_bloc-1 {
+                            flex-direction: column;  
+                            overflow-y: visible;  
+                            align-items: center;
+                            .input_container {
+                                .select_container__select {
+
+                                }
+                            }                       
+                        } 
+                    }
+                }
+            }
+        }  
+    }
+   
+}
+@media screen and (max-width: 640px) {
+ 
+    .home_container {
+        &__box_header {
+            flex-direction: column;
+        }
+        &__box_form {
+            &__form__container {
+                &__box_one {
+                    &__input_bloc {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .header_container{
+        display: flex;
+        align-items: center;
+        width: 60%;
+        
+    }
+    .main_logo_container h1 {
+
+    }
+    .main_logo {
+        width: 85px;
+    }
+    .link_bloc a {
+        // padding: 0.2rem;
+        // font-size: ;
+    }
+}
+@media screen and (max-width: 420px) {
+    fieldset {
+        max-width: 20%;
+    }
+    .select_container {
+        &__select{
+            width: 193px;
+            padding: 0.7rem;
+        }
+        &__option {
+
+        }
+          
+    }
+    
+    
+}
+@media screen and (max-width: 328px) {
+    .header_container h1 {
+        font-size: 1.5rem;
+    }
+    .link_bloc a {
+        font-size: 0.7rem;
+    }
+    .input_container label,
+    .input_container input {
+        font-size: 0.8rem;
+    }
+}
+
+::placeholder {
+    font-size: 100%;
+}
