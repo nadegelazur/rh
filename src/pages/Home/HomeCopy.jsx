@@ -1,37 +1,24 @@
 import React, { useState } from 'react';
 import './home.css'
-import { Link, useNavigate } from 'react-router-dom';
-// import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { onlyTextRegex, addressRegex } from "../../utils/regex";
-import { Modal } from 'lanana-modal-component/dist/index'
 import '../../styles/components/modal.scss'
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Header from '../../components/Header';
 import FormInput from '../../components/FormInput/FormInput';
-// import TextField from '../components/TextFieldNew';
-// import Dater from '../components/DatePick';
+import SelectField from '../../components/SelectField'
 import Button from '../../components/Button/Button';
+// import TextField from '../components/TextFieldNew';
 
-// import { etats, departments } from '../utils/SelectDatas'
+import { Modal } from 'lanana-modal-component/dist/index'
 import { addUser } from '../../features/UserSlice';
 
-const Home = () => {
-  const dispatch = useDispatch();
-  // const [firstName, setFirstName] = useState('');
-  // const [lastName, setLastName] = useState('');
-  // const [birthDate, setBirthDate] = useState('');
-  // const [startDate, setStartDate] = useState('');
-  // const [street, setStreet] = useState('');
-  // const [city, setCity] = useState('');
-  // const [state, setState] = useState('');
-  // const [zipCode, setZipCode] = useState('');
-  // const [department, setDepartment] = useState('');
-  // console.log(firstName)
-  
-  const [modal, setModal] = useState(false);
+import { etats, departments } from '../../utils/SelectDatas'
 
+const Home = () => {
+  const dispatch = useDispatch();  
+
+  const [modal, setModal] = useState(false);
   const[values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -145,27 +132,54 @@ const Home = () => {
                       include any special character and number!"
                       required={true}
           />
-          <FormInput name="state" 
+          {/* <FormInput name="state" 
                      onChange={onChange} 
                      label="State" 
                      placeholder="options"
                      required={true}
-          />
+          /> */}
+          <SelectField name="state"
+                       onChange={onChange}
+                       label="State"
+                       placeholder="options"
+                       required={true}
+                       className="select_container__select"
+          >
+            {etats.map((option, index) => {
+                return (
+                    <option className='select_container__option'
+                            value={option.name}
+                            key={index}>
+                            {option.name}
+                    </option>
+                )}) 
+            }
+          </SelectField>
           <FormInput name="zipCode"
                      type="number" 
                      onChange={onChange} 
                      label="Zip Code" 
                      placeholder="35000"
-                     pattern="^[0-9]{5}$"
+                     pattern="^[0-9]{4}$"
                      errorMessage="zip code should be only 5 number"
                      required={true}
           />
-          <FormInput name="department"
-                     onChange={onChange} 
-                     label="Department" 
-                     placeholder="options"
-                     required={true}
-          />
+          <SelectField name="department"
+                       onChange={onChange}
+                       label="Department"
+                       placeholder="options"
+                       required={true}
+                       className="select_container__select"
+          >
+            { departments.map((option, index) => {
+              return (
+                  <option value={option}
+                          key={index}>
+                          {option}
+                  </option>
+              )}) 
+            } 
+          </SelectField>
           <Button type="submit"
                   onClick={handleAddUser}
           >

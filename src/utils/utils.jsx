@@ -10,18 +10,17 @@ import {
   checkZipCode,
 } from "./function";
 
-import { validationFormSchema } from "./yupValidation";
-import {
-  selectState,
-  selectDepartment,
-  inputBirthDate,
-  inputCity,
-  inputFirstName,
-  inputLastName,
-  inputStartDate,
-  inputStreet,
-  inputZipCode,
-} from "./homeCompoProp";
+// import {
+//   selectState,
+//   selectDepartment,
+//   inputBirthDate,
+//   inputCity,
+//   inputFirstName,
+//   inputLastName,
+//   inputStartDate,
+//   inputStreet,
+//   inputZipCode,
+// } from "./homeCompoProp";
 
 import {
   onlyTextRegex,
@@ -32,7 +31,6 @@ import {
 } from "./regex";
 
 export {
-  validationFormSchema,
   fromLowerToUpperCase,
   toCamelCase,
   formValue,
