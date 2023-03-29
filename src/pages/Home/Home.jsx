@@ -4,7 +4,7 @@ import '../../styles/components/modal.scss'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 import FormInput from '../../components/FormInput/FormInput';
 import SelectField from '../../components/SelectField'
 import Button from '../../components/Button/Button';

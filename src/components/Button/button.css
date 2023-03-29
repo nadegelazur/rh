@@ -2,11 +2,11 @@ button {
     border: 1px solid rgb(53, 53, 53);
     text-decoration: none;
     color: rgb(32, 53, 30);
-    padding: 0.5rem;
+    padding: 5px 15px;
+    width: 20%;
     border-radius: 5px;
     font-size: 1rem;
     font-weight: bold;
-    width: 20%;
     box-shadow: 7px 8px 18px -4px rgba(0, 0, 0, 0.75);
     margin-bottom: 20px;
     margin-top: 10px;
@@ -19,4 +19,9 @@ button:hover {
 }
 button:active {
     transform: scale(0.9);
+}
+@media screen and (max-width: 640px) {
+    button {
+        width: 50%;
+    }
 }

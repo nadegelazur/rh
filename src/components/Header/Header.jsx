@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo_view.webp";
+import logo from "../../assets/logo_view.webp";
 
-import "../styles/components/header.scss"
+import "./header.css"
 
 const Header = ({ children }) => {
     return (

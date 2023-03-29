@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/HomeCopy.jsx";
+import Home from "./pages/Home/Home.jsx";
 import Employee from "./pages/Employee.jsx";
 import Error from "./pages/Error.jsx";
 

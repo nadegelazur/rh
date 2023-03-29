@@ -51,43 +51,23 @@
             }
         }
     }
-    .header_container{
+    .header_container {
         display: flex;
         align-items: center;
-        width: 60%;
+
         
     }
-    .main_logo_container h1 {
-
-    }
-    .main_logo {
-        width: 85px;
-    }
-    .link_bloc a {
-        // padding: 0.2rem;
-        // font-size: ;
-    }
-}
-@media screen and (max-width: 420px) {
-    fieldset {
-        max-width: 20%;
-    }
-    .select_container {
-        &__select{
-            width: 193px;
-            padding: 0.7rem;
-        }
-        &__option {
-
-        }
-          
-    }
-    
-    
 }
 @media screen and (max-width: 328px) {
-    .header_container h1 {
-        font-size: 1.5rem;
+    .header_container {
+        img {
+            width: 80px;
+        }
+     
+        h1 {
+            font-size: 1.5rem;
+            
+        }
     }
     .link_bloc a {
         font-size: 0.7rem;
