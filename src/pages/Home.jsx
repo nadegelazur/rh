@@ -19,6 +19,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const [modal, setModal] = useState(false);
+
   const[values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -43,7 +44,7 @@ const Home = () => {
       zipCode: '',
       department: '',
     })
-    // console.log(values)
+    console.log(values)
     dispatch(addUser({
       firstName: values.firstName,
       lastName: values.lastName,
@@ -94,19 +95,6 @@ const Home = () => {
 
       <div className='home_container__box_form'>
         <Formik
-          // initialValues={
-          //   { 
-          //     firstName: '',
-          //     lastName: '',
-          //     birthDate: '',
-          //     startDate: '',
-          //     street: '',
-          //     city: '',
-          //     state: '',
-          //     zipCode: '',
-          //     department: '',
-          //   }
-          // }
           validationSchema={validate}
           onSubmit={ values  => {
             console.log(values)
@@ -240,8 +228,9 @@ const Home = () => {
       </div>
 
       <Modal  title={ 'Employee was successfully created' }
-              isOpen={modal}
-              isClose={ () => setModal(false) } >
+              isOpen={ modal }
+             //  isClose={ () => setModal(false) }
+               >
       </Modal>       
     </div> 
   )

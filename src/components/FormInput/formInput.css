@@ -1,0 +1,38 @@
+.input_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+.input_container:first-child {
+    margin-top: 30px;
+}
+input {
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+    border: 3px solid #6b8027 !important;
+}
+label {
+    font-size: 12px;
+}
+span {
+    margin-bottom: 15px;
+    font-size: 12px;
+    font-weight: 200;
+    color: red;
+    display: none;
+}
+input:invalid[focused="true"] {
+    border: 1px solid red !important;
+}
+input:invalid[focused="true"] ~ span {
+    display: block;
+    
+}
+

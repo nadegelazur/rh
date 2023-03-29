@@ -1,0 +1,22 @@
+button {
+    border: 1px solid rgb(53, 53, 53);
+    text-decoration: none;
+    color: rgb(32, 53, 30);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 20%;
+    box-shadow: 7px 8px 18px -4px rgba(0, 0, 0, 0.75);
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+button:hover {
+    font-weight: bold;
+    transition: all 0.25s ease-in;
+    border: none;
+    box-shadow: none;
+}
+button:active {
+    transform: scale(0.9);
+}

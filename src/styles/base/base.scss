@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
 html {
-  overflow-y: hidden;
+  // overflow-y: hidden;
 }
 #root {
   width: 100%;
@@ -19,7 +19,6 @@ body {
 
 h1 {
   font-size: calc(1.375rem + 1.5vw);
-  text-shadow: 1px 1px 1px #fff;
 }
 
 fieldset {
@@ -37,15 +36,11 @@ legend {
   font-weight: 400;
 }
 
-input,
 select {
   border: 1px solid #000 !important;
   border-radius: 5px;
-  padding: 0.5rem;
-  // min-width: 200px;
 }
 
-input:focus,
 select:focus:hover {
   outline: none;
   border: 3px solid v.$color !important;

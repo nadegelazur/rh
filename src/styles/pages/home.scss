@@ -14,22 +14,8 @@
     }
   
     &__box_form {
-      width: 90%;
-      height: 100%;
-  
       &__form {
-        &__container {
-          // flex-wrap: wrap;
-          // gap: 2rem;
-          
-          &__box_one,
-          &__box_two {
-            // display: flex;
-            // flex-direction: row;
-            // gap: 2rem;
-            // background: rgba(104, 165, 96, 0.26);
-            // box-shadow: v.$shadowBlack;
-          }
+      
           &__box_one__input_bloc:nth-child(1),
           &__box_two__input_bloc:nth-child(2) {
             -webkit-backdrop-filter: blur(6.2px);
@@ -89,7 +75,7 @@
         }
       }
     }
-}
+
 .select_container__select {
   padding: 0.5rem;
   // width: 80%;
