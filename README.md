@@ -69,7 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 <h1 align="center">Hi 👋, I'm Nadia Lazukina</h1>
-<h3 align="center">A passionate frontend developer from India</h3>
+<h3 align="center">A passionate frontend developer from France</h3>
 
 - 🔭 I’m currently working on [Faites passer une librairie jQuery vers React](https://marvelous-clafoutis-fed846.netlify.app/)
 
