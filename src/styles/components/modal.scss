@@ -29,6 +29,7 @@ code {
 .modal__wrapper.open {
   height: 100%;
   display: block;
+  overflow-y: hidden;
 }
 .modal__wrapper.close {
   height: 0;

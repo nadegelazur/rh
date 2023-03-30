@@ -8,7 +8,6 @@ import Header from '../../components/Header/Header';
 import FormInput from '../../components/FormInput/FormInput';
 import SelectField from '../../components/SelectField'
 import Button from '../../components/Button/Button';
-// import TextField from '../components/TextFieldNew';
 
 import { Modal } from 'lanana-modal-component/dist/index'
 import { addUser } from '../../features/UserSlice';
@@ -58,6 +57,8 @@ const Home = () => {
     }))
     
     setModal(true);
+    let foo = document.querySelector("body");
+    foo.classList.add("fixed");
   }
   const onChange = (e) => {
     setValues({...values, [e.target.name]: e.target.value});
@@ -132,12 +133,6 @@ const Home = () => {
                       include any special character and number!"
                       required={true}
           />
-          {/* <FormInput name="state" 
-                     onChange={onChange} 
-                     label="State" 
-                     placeholder="options"
-                     required={true}
-          /> */}
           <SelectField name="state"
                        onChange={onChange}
                        label="State"
